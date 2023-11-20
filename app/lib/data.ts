@@ -1,4 +1,5 @@
 import { sql } from '@vercel/postgres';
+import { unstable_noStore as noStore } from 'next/cache';
 import {
   CustomerField,
   CustomersTable,
@@ -12,6 +13,7 @@ import { formatCurrency } from './utils';
 
 export async function fetchRevenue() {
   // Add noStore() here prevent the response from being cached.
+  noStore();
   // This is equivalent to in fetch(..., {cache: 'no-store'}).
 
   try {
